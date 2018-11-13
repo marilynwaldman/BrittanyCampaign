@@ -8,9 +8,9 @@ declare var google;
   styleUrls: [ './app.component.css' ]
 })
 export class AppComponent  {
-  lat = 40.0150;
-  lng = -105.2705;
-  zoom = 10;
+  lat = 48.471589;
+  lng = -3.077999;
+  zoom = 7;
   markers = [];
   filteredMarkers = [];
 
@@ -19,12 +19,42 @@ export class AppComponent  {
   ) { }
 
   getLocations(): Array<{ latitude: number, longitude: number, label: String, draggable: boolean }> {
-    return [
-      { 'latitude': 40.0150, 'longitude': -105.2705, 'label' : 'Mountains',  draggable: true},
-      { 'latitude': 40.0150, 'longitude': -105.99,   'label' : 'Boulder', draggable: true},
-      { 'latitude': 39.7392, 'longitude': -104.9903, 'label' : 'Denver', draggable: true },
-      { 'latitude': 38.7392, 'longitude': -104.9903, 'label' : 'Springs', draggable: true },
+
+
+    let newVar = [
+      {
+        'latitude': 49.4230, 'longitude': -1.1819,
+        'label': 'D Day',
+        'place': 'Utah Beach',
+        'date' : 'June 6, 1944',
+        'draggable': true,
+      },
+      {
+        'latitude': 49.1869, 'longitude': -1.4610,
+        'label': ' ',
+        'place': 'Millieres',
+        'date' : 'July 27, 1944',
+        'draggable': true,
+      },
+      {
+        'latitude': 49.0478, 'longitude': -1.4453,
+        'label': ' ',
+        'place': 'Coutances',
+        'date' : 'July 28, 1944',
+        'draggable': true,
+      },
+      {
+        'latitude': 48.8376, 'longitude': -1.5973,
+        'label': '',
+        'place': 'Granville',
+        'date' : 'July 29, 1944',
+        'draggable': true,
+      },
+
+      {'latitude': 48.23, 'longitude': -4.29, 'label': 'Brest France', draggable: true},
+
     ];
+    return newVar;
   }
 
   ngOnInit() {
@@ -35,7 +65,7 @@ export class AppComponent  {
       this.filteredMarkers = this.markers.filter(m => {
         const markerLoc = new google.maps.LatLng(m.latitude, m.longitude);
         const  distanceInKm = google.maps.geometry.spherical.computeDistanceBetween(markerLoc, center) / 1000;
-        if (distanceInKm < 100.0) {
+        if (distanceInKm < 10000.0) {
           return m;
         }
       });

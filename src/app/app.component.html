@@ -1,9 +1,12 @@
 <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
-  <agm-marker [latitude]="lat" [longitude]="lng">
+  <agm-marker [latitude]="lat" [longitude]="lng" >
   </agm-marker>
-  <agm-marker *ngFor="let marker of filteredMarkers" [latitude]="marker.latitude" [longitude]="marker.longitude"   >
+  <agm-marker *ngFor="let marker of filteredMarkers" [latitude]="marker.latitude" [longitude]="marker.longitude">
+
     <agm-info-window [disableAutoPan]="true">
-      <h3>{{marker.label}}</h3>
+      <h2>{{marker.label}}</h2>
+      <h3>{{marker.place}}</h3>
+      <h4>{{marker.date}}</h4>
     </agm-info-window>
   </agm-marker>
 </agm-map>
